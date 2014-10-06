@@ -1,0 +1,22 @@
+Spring securit with database users
+http://www.mkyong.com/spring-security/spring-security-hibernate-annotation-example/
+
+
+http://www.baeldung.com/spring_redirect_after_login
+
+
+Autentificatio spring security with ajax:
+http://stackoverflow.com/questions/3444864/ajax-login-with-spring-webmvc-and-spring-security
+
+
+
+CSRF
+http://docs.spring.io/spring-security/site/docs/3.2.0.CI-SNAPSHOT/reference/html/csrf.html#csrf-configure
+https://github.com/spring-projects/spring-boot/issues/179
+
+
+Spring security Hello world
+http://www.mkyong.com/spring-security/spring-security-hello-world-annotation-example/
+
+
+
