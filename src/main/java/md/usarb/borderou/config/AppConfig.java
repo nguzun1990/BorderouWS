@@ -20,6 +20,17 @@ import org.springframework.web.servlet.view.JstlView;
 @EnableTransactionManagement
 @Import({ SecurityConfig.class })
 public class AppConfig {
+	
+	
+//	@Bean
+//    public SessionFactory sessionFactory() {
+//    	org.hibernate.cfg.Configuration configuration = new org.hibernate.cfg.Configuration();
+//    	configuration.configure("hibernate.cfg.xml");
+//    	SessionFactory sessionFactory =configuration.buildSessionFactory();
+//    	return sessionFactory;
+//
+//    	
+//    }
  
         @Bean
         public SessionFactory sessionFactory() {
@@ -36,7 +47,7 @@ public class AppConfig {
                 prop.put("hibernate.format_sql", "true");
                 prop.put("hibernate.show_sql", "true");
                 prop.put("hibernate.dialect", 
-                    "org.hibernate.dialect.MySQL5Dialect");
+                    "org.hibernate.dialect.SQLServerDialect");
                 return prop;
         }
  
@@ -44,17 +55,18 @@ public class AppConfig {
 	public BasicDataSource dataSource() {
  
 		BasicDataSource ds = new BasicDataSource();
-	        ds.setDriverClassName("com.mysql.jdbc.Driver");
-		ds.setUrl("jdbc:mysql://localhost:3306/test");
-		ds.setUsername("root");
+	        ds.setDriverClassName("net.sourceforge.jtds.jdbcx.JtdsDataSource");
+		ds.setUrl("jdbc:jtds:sqlserver://devt.usb.md;databaseName=Baza_Studenti_test");
+		ds.setUsername("programer");
+		ds.setPassword("pr0gr@mer");
 		return ds;
 	}
  
 	//Create a transaction manager
 	@Bean
-        public HibernateTransactionManager txManager() {
-                return new HibernateTransactionManager(sessionFactory());
-        }
+    public HibernateTransactionManager txManager() {
+            return new HibernateTransactionManager(sessionFactory());
+    }
 
 	@Bean
 	public InternalResourceViewResolver viewResolver() {

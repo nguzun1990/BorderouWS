@@ -1,25 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
-	<session-factory>
-		<property name="hibernate.dialect">
-			org.hibernate.dialect.MySQLDialect
-		</property>
-		<property name="hibernate.connection.driver_class">
-			com.mysql.jdbc.Driver
-		</property>
-
-		<!-- Assume test is the database name -->
-		<property name="hibernate.connection.url">
-			jdbc:mysql://localhost/test
-		</property>
-		<property name="hibernate.connection.username">
-			root
-		</property>
-		<property name="hibernate.connection.password"></property>
-
-		<!-- List of XML mapping files -->
-		<mapping resource="Employee.hbm.xml" />
-
-	</session-factory>
+  <session-factory>
+    <!-- Conectare cu driver-ul net.sourceforge.jtds -->
+    <property name="hibernate.connection.driver_class">net.sourceforge.jtds.jdbcx.JtdsDataSource</property>
+    <property name="hibernate.connection.url">jdbc:jtds:sqlserver://devt.usb.md;databaseName=Baza_Studenti_test</property>
+    <!-- sql4jdbc.jar se afla in mapa lib si trebuie instalat in maven manual -->
+    <!--   <property name="hibernate.connection.driver_class">com.microsoft.sqlserver.jdbc.SQLServerDriver</property>
+        <property name="hibernate.connection.url">jdbc:sqlserver://192.168.254.134:1433;databaseName=Baza_Universitara_de_Studenti</property> -->
+    <property name="hibernate.connection.username">programer</property>
+    <property name="hibernate.connection.password">pr0gr@mer</property>
+    <property name="hibernate.connection.autocommit">false</property>
+    <property name="hibernate.hbm2ddl.auto">validate</property>
+    <property name="hibernate.show_sql">true</property>
+    <property name="hibernate.format_sql">true</property>
+    <property name="hibernate.jdbc.batch_size">50</property>
+    <!-- I'm using Tomcat server, I started it yesterday morning and it continuously runs until this morning, but when I tried to login in my application it shows: org.hibernate.TransactionException: JDBC rollback failed -->
+    <property name="hibernate.c3p0.max_size">1000</property>
+    <property name="hibernate.c3p0.min_size">10</property>
+    <property name="hibernate.c3p0.timeout">10000</property>
+    <property name="hibernate.c3p0.max_statements">1000</property>
+    <property name="hibernate.c3p0.idle_test_period">10000</property>
+    <property name="hibernate.c3p0.acquire_increment">1</property>
+    <property name="hibernate.dialect">org.hibernate.dialect.SQLServerDialect</property>
+       
+    <mapping class="md.usarb.borderou.vo.User"/>
+  </session-factory>
 </hibernate-configuration>
