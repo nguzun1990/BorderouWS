@@ -28,5 +28,22 @@ public class PlanDisciplina {
 	
 	public PlanDisciplina() {
 	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public PlanStudii getPlanStudii() {
+		return planStudii;
+	}
+
+	public void setPlanStudii(PlanStudii planStudii) {
+		this.planStudii = planStudii;
+	}
  
+	
 }
