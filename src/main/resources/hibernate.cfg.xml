@@ -24,6 +24,7 @@
     <property name="hibernate.c3p0.acquire_increment">1</property>
     <property name="hibernate.dialect">org.hibernate.dialect.SQLServerDialect</property>
        
-    <mapping class="md.usarb.borderou.vo.User"/>
+    <mapping class="md.usarb.borderou.entities.licenta.Facultate"/>
+    <mapping class="md.usarb.borderou.entities.licenta.Specialitate"/>
   </session-factory>
 </hibernate-configuration>
