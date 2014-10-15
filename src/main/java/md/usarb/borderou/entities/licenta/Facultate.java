@@ -23,6 +23,21 @@ public class Facultate {
 	@Column(name = "Denumire")
 	public  String denumirea;
 	
+	@Column(name = "Prescurtare")
+	private String prescurtare;
+	
+	@Column(name = "CodUniversitar")
+	private Integer codUniversitar;
+	
+	@Column(name = "Decan")
+	private String decan;
+	
+	@Column(name = "Engleza")
+	private String engleza;
+	
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "facultate")
+	private Set<Specialitate> Specialitates = new HashSet<Specialitate>(0);
+	
 	public Integer getId() {
 		return id;
 	}
@@ -105,22 +120,6 @@ public class Facultate {
 		Specialitates = specialitates;
 	}
 
-
-
-	@Column(name = "Prescurtare")
-	private String prescurtare;
-	
-	@Column(name = "CodUniversitar")
-	private Integer codUniversitar;
-	
-	@Column(name = "Decan")
-	private String decan;
-	
-	@Column(name = "Engleza")
-	private String engleza;
-	
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "facultate")
-	private Set<Specialitate> Specialitates = new HashSet<Specialitate>(0);
 	
 	
 	

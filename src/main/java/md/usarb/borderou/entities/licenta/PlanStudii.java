@@ -23,11 +23,11 @@ public class PlanStudii {
 	@Column(name = "Id")
 	private Integer id;
 	
-	@Column(name = "Promotia")
+	@Column(name = "Promotia", columnDefinition = "nchar", length = 4)
 	public String promotia;
 	
 	@Column(name = "LimbaDeStudiu")
-	private Integer limbaDeStudiu;
+	private String limbaDeStudiu;
 
 
 	@ManyToOne(fetch = FetchType.EAGER)
@@ -37,5 +37,47 @@ public class PlanStudii {
 	
 	public PlanStudii() {
 	}
+
+
+	public Integer getId() {
+		return id;
+	}
+
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+
+	public String getPromotia() {
+		return promotia;
+	}
+
+
+	public void setPromotia(String promotia) {
+		this.promotia = promotia;
+	}
+
+
+	public String getLimbaDeStudiu() {
+		return limbaDeStudiu;
+	}
+
+
+	public void setLimbaDeStudiu(String limbaDeStudiu) {
+		this.limbaDeStudiu = limbaDeStudiu;
+	}
+
+
+	public Specialitate getSpecialitate() {
+		return specialitate;
+	}
+
+
+	public void setSpecialitate(Specialitate specialitate) {
+		this.specialitate = specialitate;
+	}
+	
+	
  
 }

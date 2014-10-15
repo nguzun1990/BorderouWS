@@ -26,6 +26,13 @@ public class PlanDisciplina {
 	@JoinColumn(name = "IdPlan", nullable = false)
     private PlanStudii planStudii;
 	
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "IdDisciplina", nullable = false)
+    private Disciplina disciplina;
+	
+	@Column(name = "Semestrul")
+	private Integer semestrul;
+	
 	public PlanDisciplina() {
 	}
 
@@ -43,6 +50,22 @@ public class PlanDisciplina {
 
 	public void setPlanStudii(PlanStudii planStudii) {
 		this.planStudii = planStudii;
+	}
+
+	public Disciplina getDisciplina() {
+		return disciplina;
+	}
+
+	public void setDisciplina(Disciplina disciplina) {
+		this.disciplina = disciplina;
+	}
+
+	public Integer getSemestrul() {
+		return semestrul;
+	}
+
+	public void setSemestrul(Integer semestrul) {
+		this.semestrul = semestrul;
 	}
  
 	

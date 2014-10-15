@@ -26,5 +26,12 @@
        
     <mapping class="md.usarb.borderou.entities.licenta.Facultate"/>
     <mapping class="md.usarb.borderou.entities.licenta.Specialitate"/>
+    <mapping class="md.usarb.borderou.entities.licenta.Disciplina"/>
+    <mapping class="md.usarb.borderou.entities.licenta.Grupa"/>
+    <mapping class="md.usarb.borderou.entities.licenta.IncadrareaProfesorilor"/>
+    <mapping class="md.usarb.borderou.entities.licenta.PlanDisciplina"/>
+    <mapping class="md.usarb.borderou.entities.licenta.PlanStudent"/>
+    <mapping class="md.usarb.borderou.entities.licenta.PlanStudii"/>
+    <mapping class="md.usarb.borderou.entities.licenta.Student"/>
   </session-factory>
 </hibernate-configuration>

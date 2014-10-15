@@ -29,9 +29,16 @@ public class Specialitate {
 	@Column(name = "Denumire")
 	public String denumirea;
 	
+	@Column(name = "NrAniStudiu")
+	private Integer nrAniStudiu;
+	
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "IdFacultate", nullable = false)
     private Facultate facultate;
+	
+	
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "specialitate")
+	private Set<Grupa> grupaList = new HashSet<Grupa>(0);
 
 	
 	public Specialitate() {
@@ -76,4 +83,19 @@ public class Specialitate {
 		this.facultate = facultate;
 	}
  
+	public Integer getNrAniStudiu() {
+		return nrAniStudiu;
+	}
+
+	public void setNrAniStudiu(Integer nrAniStudiu) {
+		this.nrAniStudiu = nrAniStudiu;
+	}
+
+	public Set<Grupa> getGrupaList() {
+		return grupaList;
+	}
+
+	public void setGrupaList(Set<Grupa> grupaList) {
+		this.grupaList = grupaList;
+	}
 }

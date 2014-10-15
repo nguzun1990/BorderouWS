@@ -3,6 +3,7 @@ package md.usarb.borderou.entities.licenta;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -13,10 +14,11 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 
+
  
 @Entity
 @Table(name = "D_Disciplini")
-public class Diciplina {
+public class Disciplina {
 
 	
 	@Id
@@ -26,7 +28,13 @@ public class Diciplina {
 	@Column(name = "Denumire")
 	public String denumirea;
 	
-	public Diciplina() {
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "disciplina")
+	private Set<PlanDisciplina> planDisciplinaList = new HashSet<PlanDisciplina>(0);
+	
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "disciplina")
+	private Set<IncadrareaProfesorilor> incadrareaProfesorilorList = new HashSet<IncadrareaProfesorilor>(0);
+	
+	public Disciplina() {
 	}
 
 	public Integer getId() {

@@ -15,7 +15,7 @@ import javax.persistence.Table;
 
  
 @Entity
-@Table(name = "Grupa")
+@Table(name = "IncadrareaProfesorilor")
 public class IncadrareaProfesorilor {
 
 	
@@ -24,11 +24,11 @@ public class IncadrareaProfesorilor {
 	private Integer id;
 	
 	@Column(name = "IdProfesor")
-	public String idProfesor;
+	public Integer idProfesor;
 
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "IdDisciplina", nullable = false)
-    private Diciplina diciplina;
+    private Disciplina disciplina;
 
 	
 	public IncadrareaProfesorilor() {
@@ -45,23 +45,23 @@ public class IncadrareaProfesorilor {
 	}
 
 
-	public String getIdProfesor() {
+	public Integer getIdProfesor() {
 		return idProfesor;
 	}
 
 
-	public void setIdProfesor(String idProfesor) {
+	public void setIdProfesor(Integer idProfesor) {
 		this.idProfesor = idProfesor;
 	}
 
 
-	public Diciplina getDiciplina() {
-		return diciplina;
+	public Disciplina getDisciplina() {
+		return disciplina;
 	}
 
 
-	public void setDiciplina(Diciplina diciplina) {
-		this.diciplina = diciplina;
+	public void setDisciplina(Disciplina disciplina) {
+		this.disciplina = disciplina;
 	}
  
 	
