@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "D_Facultate")
 public class Facultate {
@@ -34,6 +36,7 @@ public class Facultate {
 	
 	@Column(name = "Engleza")
 	private String engleza;
+	
 	
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "facultate")
 	private Set<Specialitate> Specialitates = new HashSet<Specialitate>(0);
@@ -108,8 +111,7 @@ public class Facultate {
 		this.engleza = engleza;
 	}
 
-
-
+	@JsonIgnore 
 	public Set<Specialitate> getSpecialitates() {
 		return Specialitates;
 	}

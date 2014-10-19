@@ -18,7 +18,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 
-@Service("userDetailsService")
+//@Service("userDetailsService")
 public class MyUserDetailsService implements UserDetailsService {
  
 	//get user from the database, via Hibernate

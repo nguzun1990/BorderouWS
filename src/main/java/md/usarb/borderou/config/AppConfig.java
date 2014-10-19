@@ -1,25 +1,30 @@
 package md.usarb.borderou.config;
 
 import java.util.Properties;
+
 import org.apache.commons.dbcp.BasicDataSource;
 import org.hibernate.SessionFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
+import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.orm.hibernate4.HibernateTransactionManager;
 import org.springframework.orm.hibernate4.LocalSessionFactoryBuilder;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
-@EnableWebMvc
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+
 @Configuration
-@ComponentScan({ "md.usarb.borderou.*" })
+@ComponentScan({ "md.usarb.borderou" })
 @EnableTransactionManagement
-@Import({ SecurityConfig.class })
-public class AppConfig {
+@EnableWebMvc
+public class AppConfig extends WebMvcConfigurerAdapter{
 	
 	
 //	@Bean
@@ -77,4 +82,5 @@ public class AppConfig {
 		return viewResolver;
 	}
  
+	
 }
