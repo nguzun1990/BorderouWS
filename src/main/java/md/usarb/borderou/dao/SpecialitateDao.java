@@ -28,7 +28,6 @@ public class SpecialitateDao implements BaseDao {
 			factory = configuration.buildSessionFactory();
 		} catch (Throwable e) {
 			log.error(e.getMessage(), e);
-			e.printStackTrace();
 		}
 	}
 

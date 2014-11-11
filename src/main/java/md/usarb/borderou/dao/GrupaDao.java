@@ -24,8 +24,7 @@ public class GrupaDao implements BaseDao{
 	    	configuration.configure("hibernate.cfg.xml");
 			factory = configuration.buildSessionFactory();
 		} catch (Throwable e) {
-			log.error(e.getMessage(), e);
-			e.printStackTrace();			
+			log.error(e.getMessage(), e);		
 		}
 	}
 	

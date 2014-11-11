@@ -1,6 +1,5 @@
 package md.usarb.borderou.factory;
 
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 import md.usarb.borderou.dao.BaseDao;
@@ -19,21 +18,8 @@ public class DaoFactory {
 			@SuppressWarnings("unchecked")
 			T newInstance = (T) getInstanceMethod.invoke(null);
 			return newInstance;
-		} catch (IllegalAccessException e) {
-			e.printStackTrace();
-//			log.error(e.getMessage(), e);
-		} catch (NoSuchMethodException e) {
-			e.printStackTrace();
-//			log.error(e.getMessage(), e);
-		} catch (SecurityException e) {
-			e.printStackTrace();
-//			log.error(e.getMessage(), e);
-		} catch (IllegalArgumentException e) {
-			e.printStackTrace();
-//			log.error(e.getMessage(), e);
-		} catch (InvocationTargetException e) {
-			e.printStackTrace();
-//			log.error(e.getMessage(), e);
+		} catch (Exception e) {
+			log.error(e.getMessage(), e);
 		}
 		return null;
 	}
