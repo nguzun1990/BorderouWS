@@ -11,7 +11,9 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.criterion.Restrictions;
+import org.springframework.stereotype.Repository;
 
+//@Repository
 public class FacultateDao implements BaseDao{
 	
 	private static final Logger log = Logger.getLogger(FacultateDao.class.getName());

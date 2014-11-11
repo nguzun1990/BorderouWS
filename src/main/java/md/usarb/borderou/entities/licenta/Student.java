@@ -13,6 +13,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "Student")
 public class Student {
@@ -25,15 +27,16 @@ public class Student {
 	@Column(name = "Nume")
 	public  String nume;
 	
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "IdSpecialitate", nullable = false)
     private Facultate specialitate;
 	
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "IdGrupa", nullable = false)
     private Grupa grupa;
 	
-	
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "student")
+	private Set<PlanStudent> planStudentList = new HashSet<PlanStudent>(0);
 	
 	public Student() {
 	}
@@ -63,7 +66,7 @@ public class Student {
 	}
 
 
-
+	@JsonIgnore
 	public Facultate getSpecialitate() {
 		return specialitate;
 	}
@@ -75,7 +78,7 @@ public class Student {
 	}
 
 
-
+	@JsonIgnore
 	public Grupa getGrupa() {
 		return grupa;
 	}
@@ -85,7 +88,26 @@ public class Student {
 	public void setGrupa(Grupa grupa) {
 		this.grupa = grupa;
 	}
+
+
+	 
+	public Set<PlanStudent> getPlanStudentList() {
+		return planStudentList;
+	}
+
+
+
+	public void setPlanStudentList(Set<PlanStudent> planStudentList) {
+		this.planStudentList = planStudentList;
+	}
+
+
+	public PlanStudent getPlanStudent() {
+		Set<PlanStudent> planStudentSet =  this.getPlanStudentList();
+		
+		return planStudentSet.iterator().next();
+		
+	}
+		
 	
-	
- 
 }

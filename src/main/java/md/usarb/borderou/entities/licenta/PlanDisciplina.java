@@ -33,6 +33,9 @@ public class PlanDisciplina {
 	@Column(name = "Semestrul")
 	private Integer semestrul;
 	
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "planDisciplina")
+	private Set<PlanStudent> planStudentList = new HashSet<PlanStudent>(0);
+	
 	public PlanDisciplina() {
 	}
 
@@ -67,6 +70,15 @@ public class PlanDisciplina {
 	public void setSemestrul(Integer semestrul) {
 		this.semestrul = semestrul;
 	}
+
+	public Set<PlanStudent> getPlanStudentList() {
+		return planStudentList;
+	}
+
+	public void setPlanStudentList(Set<PlanStudent> planStudentList) {
+		this.planStudentList = planStudentList;
+	}
  
+	
 	
 }

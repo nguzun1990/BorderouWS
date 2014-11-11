@@ -12,6 +12,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
  
 @Entity
@@ -91,6 +93,7 @@ public class Specialitate {
 		this.nrAniStudiu = nrAniStudiu;
 	}
 
+	@JsonIgnore 
 	public Set<Grupa> getGrupaList() {
 		return grupaList;
 	}

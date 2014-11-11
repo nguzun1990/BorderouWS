@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import md.usarb.borderou.entities.licenta.Disciplina;
+import md.usarb.borderou.entities.licenta.Semestru;
 import md.usarb.borderou.entities.licenta.Specialitate;
 
 import org.apache.log4j.Logger;
@@ -54,17 +55,19 @@ public class SpecialitateDao implements BaseDao {
 
 	}
 
-	public Collection<Integer> getSemestre(int idSpecialitate) {
+	public Collection<Semestru> getSemestre(int idSpecialitate) {
 
 		Session session = factory.openSession();
-		Collection<Integer> list = new ArrayList<Integer>();
-
+		Collection<Semestru> list = new ArrayList<Semestru>();
+		Semestru semestru;
+		
 		Specialitate specialitate = (Specialitate) session.get(Specialitate.class, idSpecialitate);
 		
 		
 		int nrSemestre = specialitate.getNrAniStudiu() * 2;
 		for(int i = 1; i<= nrSemestre; i++) {
-			list.add(i);
+			semestru = new Semestru(i);
+			list.add(semestru);
 		}
 		
 		return list;

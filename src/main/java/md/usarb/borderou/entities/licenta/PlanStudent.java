@@ -1,5 +1,6 @@
 package md.usarb.borderou.entities.licenta;
 
+import java.math.BigDecimal;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -12,6 +13,10 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Type;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
  
 @Entity
@@ -22,6 +27,26 @@ public class PlanStudent {
 	@Column(name = "Id")
 	private Integer id;
 	
+	@Column(name = "NotaCurenta", columnDefinition="decimal")
+	private BigDecimal notaCurenta;
+	
+	@Column(name = "NotaExamen", columnDefinition="decimal")
+	private BigDecimal notaExamen;
+	
+	@Column(name = "NotaFinala", columnDefinition="decimal")
+	private BigDecimal notaFinala;
+	
+	@Column(name = "IdProfesor")
+	private Integer idProfesor;
+	
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "IdStudent", nullable = false)
+    private Student student;
+	
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "IdPlanDisciplina", nullable = false)
+    private PlanDisciplina planDisciplina;
+	
 	public PlanStudent() {
 	}
 
@@ -31,6 +56,55 @@ public class PlanStudent {
 
 	public void setId(Integer id) {
 		this.id = id;
+	}
+	@JsonIgnore
+	public Student getStudent() {
+		return student;
+	}
+
+	public void setStudent(Student student) {
+		this.student = student;
+	}
+
+	@JsonIgnore
+	public PlanDisciplina getPlanDisciplina() {
+		return planDisciplina;
+	}
+
+	public void setPlanDisciplina(PlanDisciplina planDisciplina) {
+		this.planDisciplina = planDisciplina;
+	}
+
+	public BigDecimal getNotaCurenta() {
+		return notaCurenta;
+	}
+
+	public void setNotaCurenta(BigDecimal notaCurenta) {
+		this.notaCurenta = notaCurenta;
+	}
+
+	public BigDecimal getNotaExamen() {
+		return notaExamen;
+	}
+
+	public void setNotaExamen(BigDecimal notaExamen) {
+		this.notaExamen = notaExamen;
+	}
+
+	public BigDecimal getNotaFinala() {
+		return notaFinala;
+	}
+
+	public void setNotaFinala(BigDecimal notaFinala) {
+		this.notaFinala = notaFinala;
+	}
+
+	public Integer getIdProfesor() {
+		return idProfesor;
+	}
+
+	public void setIdProfesor(Integer idProfesor) {
+		this.idProfesor = idProfesor;
 	}
 	
 	
