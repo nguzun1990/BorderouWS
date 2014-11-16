@@ -16,7 +16,7 @@ import javax.persistence.Table;
  
 @Entity
 @Table(name = "PlanStudii")
-public class PlanStudii {
+public class PlanStudii implements EntityInterface {
 
 	
 	@Id

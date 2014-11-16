@@ -3,7 +3,6 @@ package md.usarb.borderou.entities.licenta;
 import java.util.HashSet;
 import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -15,7 +14,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "D_Facultate")
-public class Facultate {
+public class Facultate implements EntityInterface {
 
 	
 	@Id

@@ -1,13 +1,13 @@
 package md.usarb.borderou.entities.licenta;
 
-public class Semestru implements EntityInterface {
+public class Promotia implements EntityInterface {
 	
 	String name;
 	
-	Integer value;
+	String value;
 	
-	public Semestru(Integer value) {
-		this.name =  "Semestrul " + value;
+	public Promotia(String value) {
+		this.name =  "Promotia " + value;
 		this.value = value;
 	}
 
@@ -19,11 +19,11 @@ public class Semestru implements EntityInterface {
 		this.name = name;
 	}
 
-	public Integer getValue() {
+	public String getValue() {
 		return value;
 	}
 
-	public void setValue(Integer value) {
+	public void setValue(String value) {
 		this.value = value;
 	}
 

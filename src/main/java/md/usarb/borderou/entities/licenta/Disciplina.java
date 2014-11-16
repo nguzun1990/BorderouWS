@@ -3,13 +3,10 @@ package md.usarb.borderou.entities.licenta;
 import java.util.HashSet;
 import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -18,8 +15,7 @@ import javax.persistence.Table;
  
 @Entity
 @Table(name = "D_Disciplini")
-public class Disciplina {
-
+public class Disciplina implements EntityInterface {
 	
 	@Id
 	@Column(name = "Id")

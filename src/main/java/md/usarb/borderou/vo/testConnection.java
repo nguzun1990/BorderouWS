@@ -55,9 +55,9 @@ public class testConnection {
 //		System.out.println(dao5.getSemestre(21).size());
 //		System.out.println(dao5.getSemestre(21).iterator().next());
 		
-		
-		StudentDao dao = DaoFactory.buildObject(StudentDao.class);
-		System.out.println(dao.getListStudents(0, 0, 0, 0).size());
+//		
+//		StudentDao dao = DaoFactory.buildObject(StudentDao.class);
+//		System.out.println(dao.getListStudents(0, 0, 0, 0).size());
 //		System.out.println(dao.getListDisciplina(22, 1, 51, 98).size());
 //		System.out.println(dao.getListDisciplina(22, 1, 51, 98).iterator().next().denumirea);
 	}

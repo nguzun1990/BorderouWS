@@ -7,40 +7,25 @@ import md.usarb.borderou.exception.DaoException;
 
 import org.apache.log4j.Logger;
 import org.hibernate.Criteria;
-import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.cfg.Configuration;
+import org.hibernate.StatelessSession;
 import org.hibernate.criterion.Restrictions;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public class DisciplinaDao implements BaseDao {
 
 	private static final Logger log = Logger.getLogger(DisciplinaDao.class.getName());
-	private static DisciplinaDao instance;
-	private static SessionFactory factory;
-
-	private DisciplinaDao() {
-		try {
-			Configuration configuration = new Configuration();
-			configuration.configure("hibernate.cfg.xml");
-			factory = configuration.buildSessionFactory();
-		} catch (Throwable e) {
-			log.error(e.getMessage(), e);
-		}
-	}
-
-	public static DisciplinaDao getInstance() {
-		if (instance == null) {
-			instance = new DisciplinaDao();
-		}
-		return instance;
-	}
+	
+	@Autowired
+	private SessionFactory sessionFactory;
 
 	public Collection<Disciplina> getListDisciplina(int idSpecialitatea,
-			int semestrul, int idGrupa, int idProfesor) {
+			int semestrul, int idGrupa, String promotia, int idProfesor) throws DaoException {
 		Collection<Disciplina> list = null;
-//		try {
-			Session session = factory.openSession();
-			;
+		try {
+			StatelessSession session = this.sessionFactory.openStatelessSession();
 
 			Criteria criteria = session.createCriteria(Disciplina.class,
 					"disciplina");
@@ -51,6 +36,7 @@ public class DisciplinaDao implements BaseDao {
 			criteria.createAlias("disciplina.planDisciplinaList",
 					"planDisciplina");
 			criteria.createAlias("planDisciplina.planStudii", "planStudii");
+			criteria.add(Restrictions.eq("planStudii.promotia", promotia));
 			criteria.createAlias("planStudii.specialitate", "specialitate");
 			criteria.createAlias("specialitate.grupaList", "grupa");
 			criteria.add(Restrictions.eq("specialitate.id", idSpecialitatea));
@@ -59,9 +45,9 @@ public class DisciplinaDao implements BaseDao {
 			criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
 			list = criteria.list();
 
-//		} catch (Exception ex) {
-//			throw new DaoException("Disciplina DAO Exception" + ex.getMessage(), log);
-//		}
+		} catch (Exception ex) {
+			throw new DaoException("Disciplina DAO Exception" + ex.getMessage(), log);
+		}
 		return list;
 
 	}

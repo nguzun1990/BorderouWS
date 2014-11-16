@@ -2,52 +2,39 @@ package md.usarb.borderou.dao;
 
 import java.util.Collection;
 
-import md.usarb.borderou.entities.licenta.Disciplina;
 import md.usarb.borderou.entities.licenta.Facultate;
+import md.usarb.borderou.exception.DaoException;
 
 import org.apache.log4j.Logger;
 import org.hibernate.Criteria;
-import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.cfg.Configuration;
+import org.hibernate.StatelessSession;
 import org.hibernate.criterion.Restrictions;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-//@Repository
-public class FacultateDao implements BaseDao{
-	
-	private static final Logger log = Logger.getLogger(FacultateDao.class.getName());
-	private static FacultateDao instance;
-	private static SessionFactory factory;
+@Repository
+public class FacultateDao implements BaseDao {
 
-	private FacultateDao() {
-		try {
-			Configuration configuration = new Configuration();
-	    	configuration.configure("hibernate.cfg.xml");
-			factory = configuration.buildSessionFactory();
-		} catch (Throwable e) {
-			log.error(e.getMessage(), e);	
-		}
-	}
+	private static final Logger log = Logger.getLogger(FacultateDao.class.getName());
 	
-	public static FacultateDao getInstance() {
-		if (instance == null) {
-			instance = new FacultateDao();
-		}
-		return instance;
-	}
+	@Autowired
+	private SessionFactory sessionFactory;
 	
-	public Collection<Facultate> getListFacultate() {
- 		
-    	Session session = factory.openSession();
+
+	public Collection<Facultate> getListFacultate() throws DaoException {
 		Collection<Facultate> list;
-		
-		Criteria criteria = session.createCriteria(Facultate.class, "facultate");
-		criteria.add(Restrictions.isNotNull("facultate.codUniversitar"));
-		list = criteria.list();
-		
+		try {
+			StatelessSession session = this.sessionFactory.openStatelessSession();
+
+			Criteria criteria = session.createCriteria(Facultate.class,	"facultate");
+			criteria.add(Restrictions.isNotNull("facultate.codUniversitar"));
+			list = criteria.list();
+		} catch (Exception ex) {
+			throw new DaoException("Facultatea DAO Exception" + ex.getMessage(), log);
+		}
 		return list;
-		
+
 	}
 
 }

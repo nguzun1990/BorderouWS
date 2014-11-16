@@ -18,7 +18,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
  
 @Entity
 @Table(name = "D_Specialitate")
-public class Specialitate {
+public class Specialitate implements EntityInterface {
 
 	
 	@Id
